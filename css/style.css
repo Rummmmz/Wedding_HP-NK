@@ -1492,6 +1492,12 @@ body.offcanvason .oliven-nav-toggle {
     padding: 20px 20px 30px 20px;
     background: #fff;
 }
+
+.whenwhere .item img{
+    height: 600px;
+    
+    object-fit: cover;
+}
 .whenwhere .item .content .tag a {
     color: #888;
     font-style: italic;
