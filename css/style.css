@@ -1245,6 +1245,11 @@ body.offcanvason .oliven-nav-toggle {
     top: 15px;
     right: 45px;
     }
+
+    .owl-item {
+        margin-right: 0 !important;
+        margin-left: 10px;
+    }
 }
 
 
@@ -1579,6 +1584,14 @@ body.offcanvason .oliven-nav-toggle {
 .gift .client-logo {
     opacity: 1;
     line-height: 0;
+    text-align: center;
+}
+
+.gift .client-logo p {
+    font-size: 18px;
+    font-weight: 500;
+    font-style: italic;
+    margin-top: 10px;
 }
 .gift .client-logo:hover {
     opacity: 1;
@@ -2101,7 +2114,86 @@ body.offcanvason .oliven-nav-toggle {
         margin: 0;
         text-align: center;
     }
+
+    .gift .owl-carousel {
+        margin: 0;
+    }
 }
+
+.audio-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.volume-control {
+    position: absolute;
+    bottom: 47px;
+    right: 10px;
+    width: 27px;
+    height: 0;
+    background: #BD945A;
+    border-radius: 5px;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.volume-control.show {
+    height: 100px;
+    opacity: 1;
+}
+
+.volume-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 80px;
+    height: 5px;
+    background: #fff;
+    outline: none;
+    transform: rotate(-90deg);
+    cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #e1e6a9;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.speaker-icon {
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    background: #BD945A;
+    padding: 10px 12px;
+    border-radius: 50%;
+}
+
+/* Sửa lỗi hover */
+.audio-container:hover .volume-control {
+    height: 100px;
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .volume-control {
+        bottom: 50px;
+        height: 100px;
+        opacity: 1;
+        display: none;
+    }
+}
+
+
 
 
 

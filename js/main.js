@@ -150,10 +150,10 @@
 
     // Gift Registry owlCarousel
     $('.gift .owl-carousel').owlCarousel({
-        loop: false
+        loop: true
         , margin: 30
         , mouseDrag: true
-        , autoplay: false
+        , autoplay: true
         , dots: false
         , responsiveClass: true
         , responsive: {
@@ -307,4 +307,72 @@
         //seconds
       }, 0)
   }());
+
+  const audio = document.getElementById('myAudio');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const volumeIcon = document.getElementById('volumeIcon');
+        const speakerIcon = document.querySelector('.speaker-icon');
+        const volumeControl = document.querySelector('.volume-control');
+
+        // Không tự động phát khi load trang, chờ người dùng tương tác
+        let isFirstInteraction = true;
+
+        // Xử lý click vào icon loa
+        speakerIcon.addEventListener('click', () => {
+            if (isFirstInteraction) {
+                // Lần đầu click: phát nhạc và bật âm lượng
+                audio.volume = volumeSlider.value;
+                audio.play().catch(error => {
+                    console.log("Autoplay prevented:", error);
+                });
+                isFirstInteraction = false;
+                updateVolumeIcon(audio.volume);
+            } else if (audio.paused) {
+                audio.play();
+                updateVolumeIcon(audio.volume);
+            } else {
+                audio.pause();
+                volumeIcon.className = 'fa-solid fa-volume-xmark';
+            }
+        });
+
+        // Xử lý thay đổi âm lượng
+        volumeSlider.addEventListener('input', () => {
+            audio.volume = volumeSlider.value;
+            updateVolumeIcon(audio.volume);
+        });
+
+        // Cập nhật icon theo mức âm lượng
+        function updateVolumeIcon(volume) {
+            if (volume == 0 || audio.paused) {
+                volumeIcon.className = 'fa-solid fa-volume-xmark';
+            } else if (volume <= 0.5) {
+                volumeIcon.className = 'fa-solid fa-volume-low';
+            } else {
+                volumeIcon.className = 'fa-solid fa-volume-high';
+            }
+        }
+
+        // Kiểm tra thiết bị mobile
+        if (window.innerWidth <= 768) {
+            volumeControl.classList.add('show');
+        }
+
+// Xử lý hover cho desktop
+speakerIcon.addEventListener('mouseenter', () => {
+    if (window.innerWidth > 768) {
+        volumeControl.classList.add('show');
+    }
+});
+
+speakerIcon.addEventListener('mouseleave', () => {
+    if (window.innerWidth > 768) {
+        volumeControl.classList.remove('show');
+    }
+});
+
+// Kiểm tra thiết bị mobile
+if (window.innerWidth <= 768) {
+    volumeControl.classList.add('show');
+}
     
