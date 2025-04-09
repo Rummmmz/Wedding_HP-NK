@@ -154,7 +154,7 @@
         , margin: 30
         , mouseDrag: true
         , autoplay: true
-        , dots: false
+        , dots: true
         , responsiveClass: true
         , responsive: {
             0: {
